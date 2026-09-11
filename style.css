@@ -36,7 +36,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 
 #wheel-wrapper {
   position: relative;
-  width: 320px;
+  width: 300px;
   margin: 24px auto;
 }
 
@@ -65,4 +65,16 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
   color: white;
   text-decoration: none;
   border-radius: 6px;
+}
+
+#status-message:empty {
+  display: none;
+}
+
+section {
+  margin-top: 8px;
+}
+
+#result-section p {
+  margin: 6px 0;
 }
