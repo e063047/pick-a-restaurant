@@ -18,8 +18,21 @@ select, input, button {
   padding: 10px;
   margin-top: 4px;
   font-size: 1rem;
+  line-height: 1.4;
   border-radius: 6px;
   border: 1px solid #ccc;
+}
+
+input[type="date"],
+input[type="time"] {
+  min-height: 44px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="date"]::-webkit-date-and-time-value {
+  text-align: left;
+  font-size: 1rem;
 }
 
 button {
