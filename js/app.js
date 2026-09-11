@@ -2,6 +2,7 @@
 import { getUserLocation, geocodeAddress } from './geo.js';
 import { queryRestaurants } from './overpass.js';
 import { filterByDiet, filterByOpeningHours } from './filters.js';
+import { filterByCategory } from './category.js';
 import { sampleRandom } from './sample.js';
 import { buildGoogleMapsLink } from './mapsLink.js';
 import { Wheel } from './wheel.js';
@@ -16,6 +17,7 @@ const resultSection = document.getElementById('result-section');
 const statusMessage = document.getElementById('status-message');
 const distanceSelect = document.getElementById('distance-select');
 const dietSelect = document.getElementById('diet-select');
+const categorySelect = document.getElementById('category-select');
 const dateInput = document.getElementById('date-input');
 const timeInput = document.getElementById('time-input');
 const addressInput = document.getElementById('address-input');
@@ -68,7 +70,8 @@ async function handleSearch() {
 
     const rawRestaurants = await queryRestaurants(lat, lon, radius);
     const dietFiltered = filterByDiet(rawRestaurants, dietSelect.value);
-    const openFiltered = filterByOpeningHours(dietFiltered, dateTimeValue);
+    const categoryFiltered = filterByCategory(dietFiltered, categorySelect.value);
+    const openFiltered = filterByOpeningHours(categoryFiltered, dateTimeValue);
 
     if (openFiltered.length === 0) {
       setStatus('這範圍內沒有符合條件的餐廳，試試看擴大距離或改選「全部」');

@@ -8,7 +8,8 @@ const ENDPOINTS = [
 function buildQuery(lat, lon, radiusMeters) {
   return `[out:json][timeout:25];
 (
-  node["amenity"~"^(restaurant|fast_food|cafe)$"](around:${radiusMeters},${lat},${lon});
+  node["amenity"~"^(restaurant|fast_food|cafe|bar|pub)$"](around:${radiusMeters},${lat},${lon});
+  node["shop"~"^(bakery|pastry|confectionery|beverages)$"](around:${radiusMeters},${lat},${lon});
 );
 out body;`;
 }
@@ -26,6 +27,8 @@ function parseElement(el) {
     name: tags.name,
     lat: el.lat,
     lon: el.lon,
+    amenity: tags.amenity || null,
+    shop: tags.shop || null,
     cuisine: tags.cuisine || null,
     dietVegetarian: tags['diet:vegetarian'] === 'yes',
     dietVegan: tags['diet:vegan'] === 'yes',
