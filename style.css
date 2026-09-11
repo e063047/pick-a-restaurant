@@ -1,0 +1,68 @@
+* { box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, "Noto Sans TC", sans-serif;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 16px;
+  color: #1d1d1d;
+  background: #fafafa;
+}
+
+h1 { font-size: 1.4rem; text-align: center; }
+
+label { display: block; margin-top: 12px; font-weight: bold; }
+
+select, input, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 4px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin-top: 16px;
+  background: #d62828;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+#status-message { color: #b00020; text-align: center; }
+
+#wheel-wrapper {
+  position: relative;
+  width: 320px;
+  margin: 24px auto;
+}
+
+#wheel-pointer {
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 22px solid #d62828;
+  z-index: 2;
+}
+
+#wheel-canvas { display: block; }
+
+#result-section { text-align: center; }
+
+#maps-link {
+  display: block;
+  padding: 10px;
+  margin-top: 12px;
+  background: #1a73e8;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}

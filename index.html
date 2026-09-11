@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>選餐廳轉盤</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <h1>今天吃什麼？</h1>
+
+  <section id="form-section">
+    <label for="distance-select">搜尋距離</label>
+    <select id="distance-select">
+      <option value="500">500 公尺</option>
+      <option value="1000" selected>1 公里</option>
+      <option value="3000">3 公里</option>
+      <option value="5000">5 公里</option>
+    </select>
+
+    <label for="diet-select">飲食偏好</label>
+    <select id="diet-select">
+      <option value="all" selected>全部</option>
+      <option value="vegetarian">素食</option>
+      <option value="meat">葷食</option>
+    </select>
+
+    <label for="date-input">用餐日期</label>
+    <input type="date" id="date-input">
+
+    <label for="time-input">用餐時間</label>
+    <input type="time" id="time-input">
+
+    <input type="text" id="address-input" placeholder="輸入地址（定位失敗時使用）" hidden>
+
+    <button id="search-btn">找餐廳</button>
+    <p id="status-message"></p>
+  </section>
+
+  <section id="wheel-section" hidden>
+    <div id="wheel-wrapper">
+      <div id="wheel-pointer"></div>
+      <canvas id="wheel-canvas" width="320" height="320"></canvas>
+    </div>
+    <button id="spin-btn">轉動轉盤</button>
+    <button id="restart-btn">重新搜尋</button>
+  </section>
+
+  <section id="result-section" hidden>
+    <h2 id="result-name"></h2>
+    <p>地址：<span id="result-address"></span></p>
+    <p>電話：<span id="result-phone"></span></p>
+    <p>營業狀態：<span id="result-open-status"></span></p>
+    <p>類型：<span id="result-diet"></span></p>
+    <a id="maps-link" target="_blank" rel="noopener">在 Google 地圖開啟</a>
+    <button id="restart-btn-2">再抽一次</button>
+  </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/opening_hours@3.5.0/opening_hours.js"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
