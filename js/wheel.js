@@ -15,6 +15,7 @@ export class Wheel {
     this.ctx = canvas.getContext('2d');
     this.restaurants = restaurants;
     this.rotation = 0;
+    this._spinning = false;
   }
 
   draw() {
@@ -55,6 +56,10 @@ export class Wheel {
   }
 
   spin(onFinish) {
+    // 重入保護：若正在旋轉中，直接返回，不啟動新動畫
+    if (this._spinning) return;
+
+    this._spinning = true;
     const n = this.restaurants.length;
     const winnerIndex = pickWinnerIndex(n);
     const sliceAngle = (2 * Math.PI) / n;
@@ -75,6 +80,7 @@ export class Wheel {
       if (t < 1) {
         requestAnimationFrame(step);
       } else {
+        this._spinning = false;
         onFinish(this.restaurants[winnerIndex]);
       }
     };
