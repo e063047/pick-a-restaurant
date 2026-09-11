@@ -61,6 +61,10 @@ async function handleSearch() {
     const { lat, lon } = await resolveLocation();
     const radius = Number(distanceSelect.value);
     const dateTimeValue = new Date(`${dateInput.value}T${timeInput.value}:00`);
+    if (Number.isNaN(dateTimeValue.getTime())) {
+      setStatus('請填寫用餐日期與時間');
+      return;
+    }
 
     const rawRestaurants = await queryRestaurants(lat, lon, radius);
     const dietFiltered = filterByDiet(rawRestaurants, dietSelect.value);

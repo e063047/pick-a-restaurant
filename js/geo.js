@@ -24,6 +24,7 @@ export async function geocodeAddress(address) {
     encodeURIComponent(address);
   const response = await fetch(url, {
     headers: { 'Accept-Language': 'zh-TW' },
+    signal: AbortSignal.timeout(15000),
   });
   if (!response.ok) {
     throw new Error('地址查詢服務暫時無法使用');

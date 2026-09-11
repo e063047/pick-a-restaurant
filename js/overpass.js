@@ -40,6 +40,7 @@ async function queryEndpoint(endpoint, query) {
     method: 'POST',
     body: 'data=' + encodeURIComponent(query),
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    signal: AbortSignal.timeout(20000),
   });
   if (!response.ok) {
     throw new Error(`Overpass 查詢失敗：HTTP ${response.status}`);
